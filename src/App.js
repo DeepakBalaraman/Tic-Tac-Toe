@@ -1,8 +1,9 @@
 import React from 'react';
-import './App.css';
+import styles from './App.css';
 
 function Board() {
     const [squares, setSquares] = React.useState(Array(9).fill(null))
+    const [squaresSvg, setSvgSquares] = React.useState(Array(9).fill(null))
 
     const nextValue = calcNextVal(squares)
     const winner = calcWinner(squares)
@@ -15,17 +16,23 @@ function Board() {
         const squaresCopy = [...squares]
         squaresCopy[square] = nextValue
         setSquares(squaresCopy)
+
+        const squaresSvgCopy = [...squaresSvg]
+        squaresSvgCopy[square] = nextSvg(squares)
+        setSvgSquares(squaresSvgCopy)
+
     }
 
     function restart() {
         setSquares(Array(9).fill(null))
+        setSvgSquares(Array(9).fill(null));
     }
 
     function renderSquare(i) {
         return (
-            <button className="square" onClick={() => selectSquare(i)}>
-                {squares[i]}
-            </button>
+            <div className="square" onClick={() => selectSquare(i)}>
+                {squaresSvg[i]}
+            </div>
         )
     }
 
@@ -91,8 +98,12 @@ function calcWinner(squares) {
 }
 
 function calcNextVal(squares) {
-    return squares.filter(Boolean).length % 2 === 0 ? 'X' : 'O'
+    return (squares.filter(Boolean).length % 2 === 0 ? 'X' : 'O')
 
+}
+
+function nextSvg(squares) {
+    return (squares.filter(Boolean).length % 2 === 0 ? <svg className="xmark"><rect className="r1" fill="white" width="20" rx="5" transform="rotate(-45) translate(-25, 25)" /><rect className="r2" fill="white" width="20" rx="5" transform="rotate(45) translate(68, -38)" /></svg> : <svg className="omark"><circle className="circ" cx="50" cy="68" r="40" stroke="white" fill="transparent" /></svg>)
 }
 
 function calcCurr(winner, squares, nextValue) {

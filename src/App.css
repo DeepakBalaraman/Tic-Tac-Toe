@@ -25,8 +25,8 @@ ol, ul {
 }
 
 .square {
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
     color: #ffffff;
     background: #0078d7;
     border: 2px solid #ffffff;
@@ -44,6 +44,60 @@ ol, ul {
 
 .square:focus {
         outline: none;
+}
+
+.square:hover{
+    transform: scale(1.05);
+    background: #0169bb;
+}
+
+.xmark, .omark {
+    width: 100px;
+    height: 120px;
+}
+
+.circ {
+    stroke-width: 20px;
+    stroke-dasharray: 252;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: canim 0.3s 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes canim {
+    from {
+        stroke-dashoffset: 252;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.r1 {
+    height: 0px;
+    animation: xanim 0.3s 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.r2 {
+    height: 0px;
+    animation: xanim 0.3s 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes xanim {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 100px;
+    }
 }
 
 .square:active{
@@ -73,7 +127,7 @@ ol, ul {
     text-align: center;
 }
 
-.restart:hover{
+.restart:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     transform: scale(1.05);
 }
@@ -88,8 +142,8 @@ ol, ul {
 }
 
 .restart {
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
     background-color: #ffffff;
     color: #008fff;
     border: none;
