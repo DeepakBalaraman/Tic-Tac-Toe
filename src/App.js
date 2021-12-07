@@ -74,7 +74,7 @@ function Game() {
 }
 
 function App() {
-    return <Game/>
+    return <Game />
 }
 
 function calcWinner(squares) {

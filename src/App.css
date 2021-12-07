@@ -42,14 +42,14 @@ ol, ul {
     width: 136px;
 }
 
-.square:focus {
+    .square:focus {
         outline: none;
-}
+    }
 
-.square:hover{
-    transform: scale(1.05);
-    background: #0169bb;
-}
+    .square:hover {
+        transform: scale(1.05);
+        background: #0169bb;
+    }
 
 .xmark, .omark {
     width: 100px;
@@ -100,9 +100,8 @@ ol, ul {
     }
 }
 
-.square:active{
+.square:active {
     transform: scale(0.95);
-    
 }
 
 .kbd-navigation .square:focus {
